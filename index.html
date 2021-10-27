@@ -10,12 +10,13 @@
     <body>
         <div id="myviz">
         </div>
-    
-    <script type="text/javascript">
-        var mySpec = {
+    </body>
+    <script>
+        mySpec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "data": {"url": "building_inventory.csv"},
-            "format":{"type": "csv"},
+        "data":{
+        "url": "building_inventory.csv",
+        "format":{"type": "csv"}}
             "transform": [
                {
                   "aggregate": [{
@@ -34,5 +35,4 @@
     };
         vegaEmbed('#myviz', mySpec);
     </script>
-  </body>
 </html>
