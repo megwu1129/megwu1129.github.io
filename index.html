@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 
    
-=======
->>>>>>> 6b77b7b656b130ed6aee6e4e369bb8b525acb5c1
 <html>
     <head>
         <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -22,22 +19,24 @@
     </body>
     <script>
         mySpec = {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-    "data": {
-        "values": [
-            {"A": 20, "B": 21, "C": 2},
-            {"A": 30, "B": 20, "C": 4},
-            {"A": 25, "B": 15, "C": 6},
-            {"A": 5, "B": 30, "C": 8}
-        ]
-    },
-    "mark": "circle",
-    "encoding": {
-        "x": { "field": "A", "type": "quantitative"},
-        "y": { "field": "B", "type": "quantitative"},
-        "size": { "field": "C", "type": "quantitative"}
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "building_inventory.csv"},
+    "transform": [
+       {
+      "aggregate": [{
+       "op": "sum",
+       "field": "Square Footage",
+       "as": "sum_square_footage"
+      }],
+      "groupby": ["Congress Dist"]
     }
-};
+    ],
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "Congress Dist", "type": "quantitative"},
+        "y": {"field": "sum_square_footage", "type": "quantitative"}
+      }
+    };
         vegaEmbed('#myviz', mySpec);
     </script>
 </html>
