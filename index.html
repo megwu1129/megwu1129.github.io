@@ -8,33 +8,27 @@
         <title>This is my example homepage.</title>
     </head>
     <body>
-        <p>
-            This is some text.
-        </p>
-        <p>
-            This is some more text.
-        </p>
         <div id="myviz">
         </div>
     </body>
     <script>
         mySpec = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "building_inventory.csv"},
-    "transform": [
-       {
-      "aggregate": [{
-       "op": "sum",
-       "field": "Square Footage",
-       "as": "sum_square_footage"
-      }],
-      "groupby": ["Congress Dist"]
-    }
-    ],
-      "mark": "bar",
-      "encoding": {
-        "x": {"field": "Congress Dist", "type": "quantitative"},
-        "y": {"field": "sum_square_footage", "type": "quantitative"}
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "data": {"url": "building_inventory.csv"},
+            "transform": [
+               {
+                  "aggregate": [{
+                   "op": "sum",
+                   "field": "Square Footage",
+                   "as": "sum_square_footage"
+                  }],
+                  "groupby": ["Congress Dist"]
+                }
+                ],
+                  "mark": "bar",
+                  "encoding": {
+                    "x": {"field": "Congress Dist", "type": "quantitative"},
+                    "y": {"field": "sum_square_footage", "type": "quantitative"}
       }
     };
         vegaEmbed('#myviz', mySpec);
